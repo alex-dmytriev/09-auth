@@ -23,7 +23,7 @@ export const fetchNotes = async (
     params: {
       page,
       search,
-      perPage: 9,
+      perPage: 12,
       tag,
     },
   };
