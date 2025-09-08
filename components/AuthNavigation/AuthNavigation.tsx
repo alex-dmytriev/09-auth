@@ -16,34 +16,42 @@ const AuthNavigation = () => {
   };
   return (
     <ul className={css.authNav}>
-      <li>
-        <TagsMenu />
-      </li>
-      <li className={css.navigationItem}>
-        <Link href="/profile" className={css.navigationLink}>
-          Profile
-        </Link>
-      </li>
-      <li className={css.navigationItem}>
-        <p className={css.userEmail}>User email</p>
-        <button
-          onClick={handleClickLogOut}
-          type="button"
-          className={css.logoutButton}
-        >
-          Logout
-        </button>
-      </li>
-      <li className={css.navigationItem}>
-        <Link href="/sign-in" className={css.navigationLink}>
-          Login
-        </Link>
-      </li>
-      <li className={css.navigationItem}>
-        <Link href="/sign-up" className={css.navigationLink}>
-          Sign up
-        </Link>
-      </li>
+      {!isAuthenticated ? (
+        <>
+          <li className={css.navigationItem}>
+            <Link href="/sign-in" className={css.navigationLink}>
+              Login
+            </Link>
+          </li>
+
+          <li className={css.navigationItem}>
+            <Link href="/sign-up" className={css.navigationLink}>
+              Sign up
+            </Link>
+          </li>
+        </>
+      ) : (
+        <>
+          <li className={css.navigationItem}>
+            <TagsMenu />
+          </li>
+          <li className={css.navigationItem}>
+            <Link href="/profile" className={css.navigationLink}>
+              Profile
+            </Link>
+          </li>
+          <li className={css.navigationItem}>
+            <p className={css.userEmail}>User email</p>
+            <button
+              type="button"
+              className={css.logoutButton}
+              onClick={handleClickLogOut}
+            >
+              Log Out
+            </button>
+          </li>
+        </>
+      )}
     </ul>
   );
 };

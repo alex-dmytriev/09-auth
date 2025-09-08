@@ -14,3 +14,17 @@ export const login = async (credentials: Credentials) => {
 export const logout = async () => {
   await nextServer.post<User>("/auth/logout");
 };
+
+interface SessionStatus {
+  success: boolean;
+}
+
+export const checkSession = async () => {
+  const { data } = await nextServer.get<SessionStatus>("/auth/session");
+  return data.success;
+};
+
+export const getMe = async () => {
+  const { data } = await nextServer.get<User>("/users/me");
+  return data;
+};
