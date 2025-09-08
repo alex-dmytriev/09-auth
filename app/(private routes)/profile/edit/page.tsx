@@ -2,14 +2,11 @@
 
 import { getMe, userUpdate } from "@/lib/api/clientApi";
 import css from "./EditProfilePage.module.css";
-import { getMeServer } from "@/lib/api/serverApi";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { NewUserData } from "@/types/user";
-import { useAuthStore } from "@/lib/store/authStore";
 import { useState } from "react";
-import { ApiError } from "next/dist/server/api-utils";
 
 const EditProfile = () => {
   const router = useRouter();

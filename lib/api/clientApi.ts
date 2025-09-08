@@ -1,4 +1,4 @@
-import { Credentials, NewUserData, User } from "@/types/user";
+import { Credentials, User } from "@/types/user";
 import { nextServer } from "./api";
 import { NewNote, Note } from "@/types/note";
 
