@@ -8,3 +8,8 @@ export interface User {
   username: string;
   avatar: string;
 }
+
+export interface NewUserData {
+  email?: string;
+  username: string;
+}
