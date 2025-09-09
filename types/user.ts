@@ -9,7 +9,7 @@ export interface User {
   avatar: string;
 }
 
-export interface NewUserData {
-  email?: string;
+export interface ProfileUpdatePayload {
+  email: string;
   username: string;
 }

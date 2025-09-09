@@ -36,10 +36,12 @@ export const getMe = async () => {
 };
 
 //* Edit User
-export type NewUserDataProps = { username: string };
+export type ProfileUpdatePayloadProps = { username: string };
 
-export const userUpdate = async (newUserData: NewUserDataProps) => {
-  const { data } = await nextServer.patch<User>("/users/me", newUserData);
+export const userUpdate = async (
+  profileUpdPayload: ProfileUpdatePayloadProps
+) => {
+  const { data } = await nextServer.patch<User>("/users/me", profileUpdPayload);
   return data;
 };
 

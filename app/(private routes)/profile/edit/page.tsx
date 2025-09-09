@@ -5,7 +5,7 @@ import css from "./EditProfilePage.module.css";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { NewUserData } from "@/types/user";
+import { ProfileUpdatePayload } from "@/types/user";
 import { useState } from "react";
 
 const EditProfile = () => {
@@ -21,7 +21,8 @@ const EditProfile = () => {
   });
 
   const { mutate, isPending, error } = useMutation({
-    mutationFn: (newUserData: NewUserData) => userUpdate(newUserData),
+    mutationFn: (profileUpdPayload: ProfileUpdatePayload) =>
+      userUpdate(profileUpdPayload),
     onSuccess: (updatedUser) => {
       queryClient.setQueryData(["currentUser"], updatedUser);
       router.push("/profile");
@@ -31,13 +32,14 @@ const EditProfile = () => {
   const [formError, setFormError] = useState<string | null>(null);
 
   const handleSubmit = async (formData: FormData) => {
+    const email = user?.email ?? "";
     const username = (formData.get("username") as string)?.trim();
     if (!username) {
       setFormError("Some error with username");
       return;
     }
     setFormError(null);
-    mutate({ username });
+    mutate({ username, email });
   };
 
   const handleCancel = () => {
